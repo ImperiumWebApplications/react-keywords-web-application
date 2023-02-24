@@ -73,7 +73,6 @@ const Suggestions = () => {
 
     while (count < 100 && variants.length > 0) {
       const currentVariant = variants.shift();
-      console.log(currentVariant);
       const url = `https://proxy.cors.sh/https://suggestqueries.google.com/complete/search?client=chrome&q=${currentVariant}`;
       const response = await fetch(url, {
         headers: {
