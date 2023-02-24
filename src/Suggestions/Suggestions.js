@@ -74,8 +74,12 @@ const Suggestions = () => {
     while (count < 100 && variants.length > 0) {
       const currentVariant = variants.shift();
       console.log(currentVariant);
-      const url = `https://suggestqueries.google.com/complete/search?client=chrome&q=${currentVariant}`;
-      const response = await fetch(url);
+      const url = `https://proxy.cors.sh/https://suggestqueries.google.com/complete/search?client=chrome&q=${currentVariant}`;
+      const response = await fetch(url, {
+        headers: {
+          "x-cors-api-key": "temp_9ade1f5b7f5b1eee7395e415b0240787",
+        },
+      });
       const data = await response.json();
       const keywordsArr = data[1].filter(
         (keyword) => !keywordsSet.has(keyword)
