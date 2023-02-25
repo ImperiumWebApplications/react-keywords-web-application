@@ -73,7 +73,7 @@ const Suggestions = () => {
 
     while (count < 100 && variants.length > 0) {
       const currentVariant = variants.shift();
-      const url = `https://${process.env.REACT_APP_CORS_PROXY_SERVER_URL}/https://suggestqueries.google.com/complete/search?client=chrome&q=${currentVariant}`;
+      const url = `https://trueimperium.com/https://suggestqueries.google.com/complete/search?client=chrome&q=${currentVariant}`;
       const response = await fetch(url);
       const data = await response.json();
       const keywordsArr = data[1].filter(
@@ -141,7 +141,9 @@ const Suggestions = () => {
             {keywords.map((keyword, index) => (
               <TableRow key={index}>
                 <TableCell>{index + 1}</TableCell>
-                <TableCell>{keyword.keyword}</TableCell>
+                <TableCell sx={{ maxWidth: "0px" }}>
+                  {keyword.keyword}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
