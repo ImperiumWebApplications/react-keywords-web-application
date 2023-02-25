@@ -73,8 +73,13 @@ const Suggestions = () => {
 
     while (count < 100 && variants.length > 0) {
       const currentVariant = variants.shift();
-      const url = `https://trueimperium.com:443/https://suggestqueries.google.com/complete/search?client=chrome&q=${currentVariant}`;
-      const response = await fetch(url);
+      const url = `https://cors-anywhere.herokuapp.com/https://suggestqueries.google.com/complete/search?client=chrome&q=${currentVariant}`;
+      const response = await fetch(url, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+        },
+      });
       const data = await response.json();
       const keywordsArr = data[1].filter(
         (keyword) => !keywordsSet.has(keyword)
