@@ -79,6 +79,7 @@ const Suggestions = () => {
       const keywordsArr = data[1].filter(
         (keyword) => !keywordsSet.has(keyword)
       );
+      console.log(keywordsArr.length)
       keywordsSet = new Set([...keywordsSet, ...keywordsArr]);
       setKeywords((prevKeywords) => {
         return [
@@ -138,14 +139,18 @@ const Suggestions = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {keywords.map((keyword, index) => (
-              <TableRow key={index}>
-                <TableCell>{index + 1}</TableCell>
-                <TableCell sx={{ maxWidth: "0px" }}>
-                  {keyword.keyword}
-                </TableCell>
-              </TableRow>
-            ))}
+            {keywords.map((keyword, index) => {
+              if (index < 100) {
+                return (
+                  <TableRow key={index}>
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell sx={{ maxWidth: "0px" }}>
+                      {keyword.keyword}
+                    </TableCell>
+                  </TableRow>
+                );
+              }
+            })}
           </TableBody>
         </Table>
       </TableContainer>
