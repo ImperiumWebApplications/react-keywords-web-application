@@ -79,7 +79,6 @@ const Suggestions = () => {
       const keywordsArr = data[1].filter(
         (keyword) => !keywordsSet.has(keyword)
       );
-      console.log(keywordsArr.length)
       keywordsSet = new Set([...keywordsSet, ...keywordsArr]);
       setKeywords((prevKeywords) => {
         return [
