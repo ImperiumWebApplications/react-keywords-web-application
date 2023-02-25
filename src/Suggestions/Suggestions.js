@@ -73,7 +73,7 @@ const Suggestions = () => {
 
     while (count < 100 && variants.length > 0) {
       const currentVariant = variants.shift();
-      const url = `https://trueimperium.com/https://suggestqueries.google.com/complete/search?client=chrome&q=${currentVariant}`;
+      const url = `http://trueimperium.com:8080/http://suggestqueries.google.com/complete/search?client=chrome&q=${currentVariant}`;
       const response = await fetch(url);
       const data = await response.json();
       const keywordsArr = data[1].filter(
